@@ -1,0 +1,9 @@
+.main-wrap {
+  padding: 0 15% 0 15%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.img-wrap {
+
+}

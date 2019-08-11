@@ -1,0 +1,106 @@
+.white-button {
+  text-decoration: none;
+  color: black;
+  maring-top: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: white;
+  display: inline-block;
+}
+
+.wrap-video {
+  display: block
+}
+
+video {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+}
+
+.video-textbox {
+  position: absolute;
+  width: 500px;
+  height: 300px;
+  text-align: center;
+  top:80%;
+  left:30%;
+}
+.video-textbox h1 {
+  display: block;
+  text-align: center;
+  font-size: 45px;
+  color: #ffffff;
+  font-weight: bolder;
+}
+.video-textbox p {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-top: 45px
+}
+.flex-container2 {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-left: 70px;
+  padding-bottom: 40px;
+}
+
+.right-text {
+  text-align: left;
+  width: 50%;
+  margin-left: 80px;
+  width: 300px;
+  height: 500px;
+}
+
+.right-text h2{
+  font-weight: lighter;
+  font-size: 50px;
+}
+
+.inner-text{
+  line-height: 30px;
+  font-size: 15px;
+}
+
+.black-button {
+  display: inline-block;
+  margin-top: 40px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #3e3f40;
+  height: 60px;
+  color: white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 20px;
+}
+.img-container{
+  width: 400px;
+  text-align: center;
+  font-size: 20px;
+  line-height: 30px;
+}
+.img-container b{
+  font-weight: 600;
+}
+
+.damn-box {
+  position: absolute;
+  top: 0;
+  left:100px;
+  color: white;
+  height: 400px;
+  width: 400px;
+}
+

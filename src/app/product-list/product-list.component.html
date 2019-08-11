@@ -1,0 +1,12 @@
+<div class="main-wrap">
+  <div *ngFor="let product of products" style="width: 23%; padding: 20px;">
+    <div (click)="openDetail(product.id)">
+      <img src="../../assets/{{product.imgList[0]}}" alt="product.imgList[0]" style="width: 100%;">
+      <div>{{product.name}}</div>
+      <div>${{product.price}}</div>
+    </div>
+  </div>
+
+
+</div>
+

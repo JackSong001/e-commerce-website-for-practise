@@ -1,0 +1,88 @@
+<!-- <div style="background-color: #f1f2f3; margin-left: 25%; margin-right: 25%; padding-top:30px; padding-bottom: 30px;">
+  <div>
+    <div style="text-align: center">
+      <button (click)="isLogIn=true" [style.border-bottom]="isLogIn ? '1px black solid' : 'none'">Log In</button>
+      <button (click)="isLogIn=false" [style.border-bottom]="isLogIn ? 'none' : '1px black solid'">Creat Account</button>
+    </div>
+
+    <div style="margin: 40px 20px 40px 20px;" *ngIf="isLogIn">
+      <div style="margin-bottom: 10px;">
+        <span>Email Address</span>
+        <input style="padding: 10px; width: 100%" type="text">
+      </div>
+      <div>
+        <span>Password</span>
+        <input style="padding: 10px ; width: 100%" type="text">
+      </div>
+      <a href="" class="black-button">Log In</a>
+    </div>
+
+    <div style="margin: 40px 20px 40px 20px;" *ngIf="!isLogIn">
+      <div style="margin-bottom: 10px; display: flex; justify-content: space-between;">
+        <div style="width: 48%">
+          <span style="display: block">First Name</span>
+          <input style="padding: 10px; width: 100%;" type="text">
+        </div>
+        <div style="width: 48%">
+          <span style="display: block">Last Name</span>
+          <input style="padding: 10px; width: 100%;" type="text">
+        </div>
+      </div>
+      <div>
+        <span>Email Address</span>
+        <input style="padding: 10px ; width: 100%" type="text">
+      </div>
+      <p style="margin: 20px 0 20px 0;color: #747576">Your privacy is important to us. See our Terms.</p>
+
+      <div>
+        <span>Password</span>
+        <input style="padding: 10px; width: 100%" type="text">
+        <p style="margin: 20px 0 20px 0; color: #747576">Password must be at least 8 characters and contain at least one uppercase letter and one number.</p>
+      </div>
+
+      <div>
+        <span>Confrim Password</span>
+        <input style="padding: 10px; width: 100%" type="text">
+      </div>
+      <a href="" class="black-button">Register</a>
+    </div>
+
+  </div>
+</div> -->
+<mat-card class="login-bg-color">
+  <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+      <mat-tab-group mat-align-tabs="center">
+          <mat-tab label="SIGN UP">
+              <mat-form-field class="input-wrapper">
+                  <input matInput placeholder="Email Address" [ngModel]="emailAdd"
+                      (ngModelChange)="emailAdd = $event.trim()">
+                  <mat-hint align="start"  color="warn" *ngIf="wrongEmail">Email Address is <strong>not exist</strong></mat-hint>
+              </mat-form-field>
+              <mat-form-field class="input-wrapper">
+                  <input matInput type="password" placeholder="Password" [ngModel]="password"
+                      (ngModelChange)="password = $event.trim()">
+                  <mat-hint align="start"  color="warn" *ngIf="wrongPsw">Password is not <strong>exist</strong></mat-hint>
+              </mat-form-field>
+          </mat-tab>
+          <mat-tab label="REGISTER">
+              <mat-form-field class="input-wrapper">
+                  <input matInput placeholder="Email Address" [ngModel]="emailAdd"
+                      (ngModelChange)="emailAdd = $event.trim()">
+                  <mat-hint align="start"  color="warn" *ngIf="wrongEmail">Email Address is <strong>not exist</strong></mat-hint>
+              </mat-form-field>
+              <mat-form-field class="input-wrapper">
+                  <input matInput placeholder="Password" [ngModel]="password"
+                      (ngModelChange)="password = $event.trim()">
+                  <mat-hint align="start"  color="warn" *ngIf="wrongPsw">Password is not <strong>exist</strong></mat-hint>
+              </mat-form-field>
+          </mat-tab>
+      </mat-tab-group>
+  </mat-card-content>
+
+  <mat-card-actions align='end'>
+      <button mat-raised-button (click)="logIn()">Log In</button>
+  </mat-card-actions>
+</mat-card>

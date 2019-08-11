@@ -1,0 +1,164 @@
+<div class="acc-container">
+  <div class="acc-wrapper">
+    <div class="tab">
+      <button (click)="setTabName('dashboard')" [id]="tabName">Dashboard</button>
+      <button (click)="setTabName('account')" [id]="tabName">Account</button>
+      <button (click)="setTabName('addressbook')" [id]="tabName">Address Book</button>
+      <button (click)="setTabName('orders')" [id]="tabName">My Orders</button>
+    </div>
+
+    <div class="tabcontent" [ngSwitch]="tabName">
+
+      <ng-container *ngSwitchCase="'dashboard'">
+        <div class="contact-box">
+          <div class="content">
+            <h3>Contact Information</h3>
+            <p><b>{{user.emailAdd}}</b></p>
+            <p></p>
+            <a href="">Change Password</a><span> | </span>
+            <button mat-raised-button>EDIT</button>
+          </div>
+        </div>
+        <div class="contact-box" style="margin-bottom: 0">
+          <h2>Address Book</h2>
+          <div class="content" style="display: flex">
+            <div>
+              <p><b>Default Billing Address</b></p>
+              <ng-container *ngIf="user; else noAddress">
+                <p>{{user.street}}</p>
+                <p>{{user.apt}}</p>
+                <p>{{user.state}}</p>
+                <p>{{user.city}}</p>
+                <p>{{user.zip}}</p>
+              </ng-container>
+              <ng-template #ngAddress>
+                <p>You have not set a default billing address.</p>
+              </ng-template>
+              <button mat-raised-button>EDIT</button>
+            </div>
+            <div>
+              <p><b>Default Shipping Address</b></p>
+              <p>You have not set a default shipping address.</p>
+              <button mat-raised-button>EDIT</button>
+            </div>
+          </div>
+          <a class="black-button">Add Address</a>
+        </div>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'account'">
+        <div class="acct">
+          <h1 style="margin-bottom: 20px; font-weight: lighter; color: #3e3f40">Account</h1>
+          <div>
+            <div style="margin-bottom: 20px; display: flex; justify-content: space-between; ">
+              <div style="width: 48%">
+                <span style="display: block">First Name</span>
+                <input style="padding: 15px; width: 100%;" type="text" [value]="user.firstName">
+              </div>
+              <div style="width: 48%">
+                <span style="display: block">Last Name</span>
+                <input style="padding: 15px; width: 100%;" type="text" [value]="user.lastName">
+              </div>
+            </div>
+            <div style="margin-bottom: 20px;">
+              <span>Email Address</span>
+              <input style="padding: 15px; width: 100%" type="text" [value]="user.emailAdd">
+            </div>
+            <div style="margin-bottom: 20px;">
+              <span>Current Password</span>
+              <input style="padding: 15px; width: 100%" type="text" [value]="user.password">
+            </div>
+            <input type="checkbox"><span> Change Password</span>
+            <div>
+              <div style="float: left;"><a class="black-button">Save</a></div>
+              <div style="float: right;"><a class="black-button">Reset my password</a></div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'addressbook'">
+        <div class="acct">
+          <h1 style="margin-bottom: 20px; font-weight: lighter; color: #3e3f40">Add New Address</h1>
+          <div>
+            <div style="margin-bottom: 20px; display: flex; justify-content: space-between; ">
+              <div style="width: 48%">
+                <span style="display: block">First Name</span>
+                <input style="padding: 15px; width: 100%;" type="text" [value]="user.firstName">
+              </div>
+              <div style="width: 48%">
+                <span style="display: block">Last Name</span>
+                <input style="padding: 15px; width: 100%;" type="text" [value]="user.lastName">
+              </div>
+            </div>
+            <div style="margin-bottom: 20px; display: flex; justify-content: space-between; ">
+              <div style="width: 48%">
+                <span style="display: block">Company</span>
+                <input style="padding: 15px; width: 100%;" type="text" [value]="user.company">
+              </div>
+              <div style="width: 48%">
+                <span style="display: block">Telephone</span>
+                <input style="padding: 15px; width: 100%;" type="text" [value]="user.telephone">
+              </div>
+            </div>
+            <div style="margin-bottom: 20px; display: flex; justify-content: space-between; ">
+              <div style="width: 60%">
+                <span style="display: block">Street Address</span>
+                <input style="padding: 15px; width: 100%;" type="text" [value]="user.street">
+              </div>
+              <div style="width: 35%">
+                <span style="display: block">Apt/Suite</span>
+                <input style="padding: 15px; width: 100%;" type="text" [value]="user.apt">
+              </div>
+            </div>
+            <div style="margin-bottom: 20px; display: flex; justify-content: space-between; ">
+              <div style="width: 48%">
+                <span style="display: block">Country</span>
+                <select style="padding: 15px; width: 100%;" type="text" [value]="user.country">
+                  <option value=""></option>
+                  <option value="">China</option>
+                  <option value="usa" selected>United State</option>
+                  <option value="">United Kingdom</option>
+                </select>
+              </div>
+              <div style="width: 48%">
+                <span style="display: block">State/Province</span>
+                <select style="padding: 15px; width: 100%;" type="text" [value]="user.state">
+                  <option value=""></option>
+                  <option value="">Alabama</option>
+                  <option value="NJ">New Jersey</option>
+                  <option value="">New York</option>
+                </select>
+              </div>
+            </div>
+            <div style="margin-bottom: 20px; display: flex; justify-content: space-between; ">
+              <div style="width: 60%">
+                <span style="display: block">City</span>
+                <input style="padding: 15px; width: 100%;" type="text" [value]="user.city">
+              </div>
+              <div style="width: 35%">
+                <span style="display: block">Zip Code</span>
+                <input style="padding: 15px; width: 100%;" type="text" [value]="user.zip">
+              </div>
+            </div>
+            <a href="" class="black-button">Save Address</a>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'orders'">
+        <div class="contact-box" style="background-color: white">
+          <div class="content">
+            <h1 style="font-weight: lighter; margin-bottom: 20px; color: #3e3f40">My Orders</h1>
+
+            <p>
+              You haven't placed any orders yet.
+            </p>
+            <a href="" class="grey-btn"><span>《</span> Back</a>
+          </div>
+        </div>
+      </ng-container>
+
+    </div>
+  </div>
+</div>

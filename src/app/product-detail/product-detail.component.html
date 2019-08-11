@@ -1,0 +1,31 @@
+<div class="detail-container">
+  <div class="img-container">
+    <mat-grid-list cols="3" rowHeight="200px">
+      <mat-grid-tile colspan="1" rowspan="1">
+        <img src="../../assets/img3.jpg" alt="product.imgList[0]" style="height:100%">
+      </mat-grid-tile>
+      <mat-grid-tile colspan="2" rowspan="4">
+        <img src="../../assets/img3.jpg" alt="product.imgList[0]" style="height:100%">
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <img src="../../assets/img3.jpg" alt="product.imgList[0]" style="height:100%">
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <img src="../../assets/img3.jpg" alt="product.imgList[0]" style="height:100%">
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <div class="right-container">
+    <h1>{{product.name}}</h1>
+    <p>Color : </p>
+    <mat-button-toggle-group name="color" aria-label="select color" [value]="color" (change)="color = $event.value">
+      <mat-button-toggle *ngFor="let color of product.color" [value]="color">{{color}}</mat-button-toggle>
+    </mat-button-toggle-group>
+    <p>Size guide: </p>
+    <mat-button-toggle-group name="size" aria-label="select size" [value]="size" (change)="size = $event.value">
+      <mat-button-toggle *ngFor="let size of product.size" [value]="size">{{size}}</mat-button-toggle>
+    </mat-button-toggle-group>
+    <p>Price: ${{product.price}}</p>
+    <button mat-raised-button (click)="addToCart()">Add to Bag</button>
+  </div>
+</div>

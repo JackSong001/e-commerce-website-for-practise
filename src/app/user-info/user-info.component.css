@@ -1,0 +1,126 @@
+p {
+  color: #5f6061;
+}
+
+.acc-container {
+  display: flex;
+  justify-content: center;
+}
+.acc-wrapper {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+/* Style the tab */
+.tab {
+  background-color: white;
+  width: 30%;
+}
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  color: #3e3f40;
+  padding: 20px 16px;
+  width: 90%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 15px;
+}
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #f1f2f3;
+}
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: #ccc;
+}
+/* Style the tab content */
+.tabcontent {
+  padding-left: 30px;
+  border-left: 1px solid #f1f2f3;
+  width: 100%;
+}
+
+.black-button {
+  display: inline-block;
+  margin-top: 40px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #3e3f40;
+  color: white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 18px;
+}
+
+.contact-box {
+  background-color: #f1f2f3;
+  padding: 30px 20px;
+  margin-bottom: 20px;
+}
+.content h3, h2{
+  font-size: large;
+  color: #3e3f40;
+  margin-bottom: 25px;
+  font-weight: lighter;
+}
+
+.content p,a {
+  line-height: 25px;
+  font-size:  18px;
+  color: #3e3f40;
+}
+
+p {
+  margin-right: 80px;
+}
+
+input {
+  background-color: #f1f2f3;
+  border: none;
+  color: slategray;
+  font-size: 15px;
+}
+
+input:focus {
+  border-color: #f1f2f3;
+  background-color: white;
+  border-style: solid;
+}
+
+.acct span {
+  margin-bottom: 8px;
+  color: #5f6061;
+}
+
+select {
+  background-color: #f1f2f3;
+  height: 50px;
+  border: none;
+  font-size: 15px;
+}
+
+.grey-btn {
+  display: inline-block;
+  margin-top: 40px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #f1f2f3;
+  color: #5f6061;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 18px;
+}
+
+.grey-btn span{
+  font-size: 12px;
+  text-align: center;
+}
+
+

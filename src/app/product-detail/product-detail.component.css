@@ -1,0 +1,28 @@
+.detail-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #f1f2f3;
+}
+
+.img-container {
+    width:45%;
+    background-color: #f1f2f3;
+}
+.right-container{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: first baseline;
+}
+
+h1 {
+    padding: 20px 0;
+}
+
+p {
+    padding: 8px 0;
+    font-size: 14px;
+    font-weight: 700;
+}

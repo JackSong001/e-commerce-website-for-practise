@@ -1,0 +1,122 @@
+html {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #3e3f40;
+}
+
+.main-nav {
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+.main-icon {
+  height: 20px;
+  width: 185px;
+}
+
+.top-nav{
+  width: 100%;
+  display: inline-block;
+  padding-bottom: 30px;
+}
+
+.top-nav a {
+  color: #747576;
+}
+
+.top-nav ul{
+  float: right;
+  font-size: 15px;
+}
+
+.top-nav ul li{
+  color: #bebfc0;
+  padding-left: 30px;
+  float: left;
+}
+
+.mid-nav ul{
+  margin: 0;
+  float: right;
+}
+
+.mid-nav ul li {
+  padding-left: 30px;
+  float: left;
+}
+
+.lower-nav {
+  border-top: solid 1px;
+  border-top-color: #747576;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.lower-nav ul li{
+  float: left;
+}
+
+.lower-nav a{
+  color: #3e3f40;
+}
+
+footer{
+  width: 100%;
+  background: #f1f2f3;
+  bottom:0;
+  left: 0;
+}
+
+
+
+.footer-1 {
+  margin-top: 40px;
+  margin-left: 80px;
+  margin-right: 80px;
+  padding-top: 40px;
+}
+
+.footer-textbox {
+  border-bottom: solid 1px black;
+  line-height: 35px;
+  padding-bottom: 30px;
+}
+
+.footer-textbox h2 {
+  font-size: 30px;
+  font-weight: lighter;
+}
+
+.footer-textbox a {
+  color: black;
+  text-decoration: underline;
+}
+
+.sm-box {
+  margin: 20px 40px 20px 0;
+  line-height: 25px;
+}
+
+.ss-box {
+  margin: 20px 40px 20px 0;
+  line-height: 25px;
+}
+
+.ss-box a{
+  color: #747576;
+  font-family: Maison Neue;
+}
