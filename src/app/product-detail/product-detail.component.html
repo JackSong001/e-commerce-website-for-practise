@@ -1,31 +1,36 @@
-<div class="detail-container">
-  <div class="img-container">
-    <mat-grid-list cols="3" rowHeight="200px">
-      <mat-grid-tile colspan="1" rowspan="1">
-        <img src="../../assets/img3.jpg" alt="product.imgList[0]" style="height:100%">
-      </mat-grid-tile>
-      <mat-grid-tile colspan="2" rowspan="4">
-        <img src="../../assets/img3.jpg" alt="product.imgList[0]" style="height:100%">
-      </mat-grid-tile>
-      <mat-grid-tile colspan="1" rowspan="1">
-        <img src="../../assets/img3.jpg" alt="product.imgList[0]" style="height:100%">
-      </mat-grid-tile>
-      <mat-grid-tile colspan="1" rowspan="1">
-        <img src="../../assets/img3.jpg" alt="product.imgList[0]" style="height:100%">
-      </mat-grid-tile>
-    </mat-grid-list>
-  </div>
-  <div class="right-container">
-    <h1>{{product.name}}</h1>
-    <p>Color : </p>
-    <mat-button-toggle-group name="color" aria-label="select color" [value]="color" (change)="color = $event.value">
-      <mat-button-toggle *ngFor="let color of product.color" [value]="color">{{color}}</mat-button-toggle>
-    </mat-button-toggle-group>
-    <p>Size guide: </p>
-    <mat-button-toggle-group name="size" aria-label="select size" [value]="size" (change)="size = $event.value">
-      <mat-button-toggle *ngFor="let size of product.size" [value]="size">{{size}}</mat-button-toggle>
-    </mat-button-toggle-group>
-    <p>Price: ${{product.price}}</p>
-    <button mat-raised-button (click)="addToCart()">Add to Bag</button>
+<div class="bg-img-container" [ngStyle]="bgImg">
+  <div class="detail-container">
+    <div class="img-container">
+      <mat-grid-list cols="1" rowHeight="150px">
+        <mat-grid-tile colspan="1" rowspan="1" *ngFor="let img of product.imgList">
+          <img src="../../assets/{{img}}" alt="img" (click)="changeImg(img)">
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+    <div class="right-container">
+      <h1>{{product.brandName}}</h1>
+      <p>Color : </p>
+      <mat-button-toggle-group name="color" aria-label="select color" [value]="color" (change)="color = $event.value">
+        <mat-button-toggle *ngFor="let color of product.color" matTooltip="{{color.name}}" [value]="color.name">
+          <mat-icon [style.color]="color.color">lens</mat-icon> {{ color.name }}
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+      <p>Size guide: </p>
+      <mat-button-toggle-group name="size" aria-label="select size" [value]="size" (change)="size = $event.value">
+        <mat-button-toggle *ngFor="let size of product.size" [value]="size">{{size}}</mat-button-toggle>
+      </mat-button-toggle-group>
+      <p>Price: ${{product.price}}</p>
+      <button mat-raised-button (click)="addToCart()">Add to Bag</button>
+      <mat-divider></mat-divider>
+      <div class="icon-group">
+        <fa-icon [icon]="faFacebookF"></fa-icon>
+        <fa-icon [icon]="faPinterest"></fa-icon>
+        <fa-icon [icon]="faTwitter"></fa-icon>
+        <fa-icon [icon]="faGooglePlusG"></fa-icon>
+      </div>
+      <p class="center no-margin-bottom" data-no-mobile="">
+        Questions? <button mat-button >Ask a Stylist</button>
+      </p>
+    </div>
   </div>
 </div>

@@ -66,12 +66,12 @@ a {
   justify-content: space-between;
 }
 
-.lower-nav ul li{
-  float: left;
-}
-
-.lower-nav a{
+.lower-nav li {
+  cursor: pointer;
   color: #3e3f40;
+  font-size: 12px;
+  font-weight: 300;
+  padding-right: 5px;
 }
 
 footer{

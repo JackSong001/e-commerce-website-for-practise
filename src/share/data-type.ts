@@ -25,12 +25,19 @@ export interface Address {
 
 export interface Product {
   id: number;
-  name: string;
+  name: string; // ronda-black
+  brandName: string; //The Ronda Top
   price: number;
-  color: string[];
+  color: Color[];
   size: string[];
   description: string;
   imgList: string[];
+}
+
+export interface Color {
+  name: string;
+  color: string; // #225225225
+  link: string;
 }
 
 export interface OrderInfo {

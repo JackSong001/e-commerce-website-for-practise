@@ -4,6 +4,23 @@
   justify-content: space-around;
   flex-wrap: wrap;
 }
-.img-wrap {
 
+.main-wrap .item {
+  flex: 1 0 25%;
+  box-sizing: border-box;
+  padding-bottom: 6vh;
+}
+
+.item + div {
+  width: 100%;
+}
+
+.img-wrapper {
+  background-size: 42vw auto;
+  background-repeat: no-repeat;
+  background-position: -7vw;
+  width: 80%;
+  height: 40vh;
+  max-width: 14vw;
+  object-fit: cover;
 }

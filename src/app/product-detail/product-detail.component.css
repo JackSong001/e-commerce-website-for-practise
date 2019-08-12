@@ -1,13 +1,21 @@
+.bg-img-container {
+    min-height: 100vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #f7f7f7
+}
 .detail-container {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    background-color: #f1f2f3;
 }
 
 .img-container {
-    width:45%;
-    background-color: #f1f2f3;
+    width:6vw;
+    padding-left: 10vw;
+    overflow: hidden;
+    max-height: 100vh;
 }
 .right-container{
     width: 50%;
@@ -25,4 +33,26 @@ p {
     padding: 8px 0;
     font-size: 14px;
     font-weight: 700;
+}
+
+.mat-grid-tile img {
+    max-width: 14vw;
+    object-fit: cover;
+    margin-left: 3vw;
+}
+
+mat-divider {
+    padding: 6px 0;
+}
+
+.icon-group {
+    display: flex;
+    width: 60%;
+    padding: 16px 0;
+}
+
+fa-icon {
+    width: 24px;
+    height: 24px;
+    padding: 8px;
 }

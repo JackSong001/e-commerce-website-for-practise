@@ -17,12 +17,19 @@ export class ProductListComponent implements OnInit {
   constructor(private productService: ProductServiceService, private router: Router) { }
 
   ngOnInit() {
-    this.productService.getAllProducts().subscribe( resp => {
+    this.productService.getAllProducts().subscribe(resp => {
       this.products = resp;
     });
   }
 
-  openDetail(productId: number){
+  openDetail(productId: number) {
     this.router.navigate(['/product', productId]);
+  }
+
+  getBgImg(name: string) {
+    console.log(name);
+    return {
+      'background-image': `url(../../assets/${name})`
+    }
   }
 }
