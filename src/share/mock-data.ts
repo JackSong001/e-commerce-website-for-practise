@@ -4,7 +4,6 @@ import { bindCallback } from 'rxjs';
 
 export const Products: Product[] = [
   {
-    id: 1,
     name: 'ronda-black',
     brandName: 'The Ronda Top',
     price: 75,
@@ -19,7 +18,6 @@ export const Products: Product[] = [
     imgList: ['20180611_rondatop_black__hero.webp', '20180611_rondatop_black__side.webp', '20180611_rondatop_black__front.webp', '20180611_rondatop_black__back.webp', '20180611_rondatop_black__detail.webp']
   },
   {
-    id: 2,
     name: 'ronda-black',
     brandName: 'The Ronda Top',
     price: 75,
@@ -34,7 +32,6 @@ export const Products: Product[] = [
     imgList: ['20180611_rondatop_black__hero.webp', '20180611_rondatop_black__side.webp', '20180611_rondatop_black__front.webp', '20180611_rondatop_black__back.webp', '20180611_rondatop_black__detail.webp']
   },
   {
-    id: 3,
     name: 'ronda-black',
     brandName: 'The Ronda Top',
     price: 75,
@@ -49,7 +46,6 @@ export const Products: Product[] = [
     imgList: ['20180611_rondatop_black__hero.webp', '20180611_rondatop_black__side.webp', '20180611_rondatop_black__front.webp', '20180611_rondatop_black__back.webp', '20180611_rondatop_black__detail.webp']
   },
   {
-    id: 4,
     name: 'ronda-black',
     brandName: 'The Ronda Top',
     price: 75,
@@ -64,7 +60,6 @@ export const Products: Product[] = [
     imgList: ['20180611_rondatop_black__hero.webp', '20180611_rondatop_black__side.webp', '20180611_rondatop_black__front.webp', '20180611_rondatop_black__back.webp', '20180611_rondatop_black__detail.webp']
   },
   {
-    id: 5,
     name: 'ronda-black',
     brandName: 'The Ronda Top',
     price: 75,
@@ -82,31 +77,16 @@ export const Products: Product[] = [
 
 export const Accounts: Account[] = [
   {
-    emailAdd: 'xsong120394@gmail.com',
+    email: 'xsong120394@gmail.com',
     password: '123456',
     firstName: 'xuxin',
     lastName: 'song',
-    company: 'this is a company',
-    street: 'this is a street',
-    apt: '1234',
     country: 'usa',
-    state: 'NJ',
+    address: 'this is a street',
     city: 'city',
-    zip: 123456,
-    telephone: 1231231122
-  },
-  {
-    emailAdd: 'test@test.com',
-    password: '123456',
-    firstName: 'xuxin',
-    lastName: 'song',
-    company: 'this is a company',
-    street: 'this is a street',
-    apt: '1234',
-    country: 'usa',
     state: 'NJ',
-    city: 'city',
-    zip: 123456,
-    telephone: 1231231122
-  },
+    zip: '123456',
+    phone: 1231231122,
+    bod: 1565440623503
+  }
 ];

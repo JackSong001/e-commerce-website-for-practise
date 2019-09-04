@@ -1,9 +1,9 @@
 <div class="main-wrap">
   <div *ngFor="let product of products" class="item">
     <ng-container >
-      <div class="img-wrapper" [ngStyle]="getBgImg(product.imgList[0])" (click)="openDetail(product.id)"></div>
-      <div (click)="openDetail(product.id)">{{product.name}}</div>
-      <div (click)="openDetail(product.id)">${{product.price}}</div>
+      <div class="img-wrapper" [ngStyle]="getBgImg(product.imgList[0])" (click)="openDetail(product.name)"></div>
+      <div (click)="openDetail(product.name)">{{product.brandName}}</div>
+      <div (click)="openDetail(product.name)">${{product.price}}</div>
     </ng-container>
   </div>
 </div>

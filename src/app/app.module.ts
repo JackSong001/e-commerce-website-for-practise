@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { CartDialogComponent } from './cart-dialog/cart-dialog.component';
+import { LoginComponent } from './login/login.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,8 @@ import { CartDialogComponent } from './cart-dialog/cart-dialog.component';
     ProductListComponent,
     ProductDetailComponent,
     CartDialogComponent,
+    LoginComponent,
+    OrderHistoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,8 +38,8 @@ import { CartDialogComponent } from './cart-dialog/cart-dialog.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FontAwesomeModule
-
+    FontAwesomeModule,
+    ReactiveFormsModule
   ],
   entryComponents: [CartDialogComponent],
   providers: [],

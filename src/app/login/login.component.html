@@ -1,0 +1,14 @@
+<form (submit)="logIn(loginform)" #loginform="ngForm">
+    <mat-form-field>
+        <input matInput placeholder="Email" name="email" required email #emailInput="ngModel"
+            ngModel>
+        <mat-error *ngIf="emailInput.invalid">Please give a valid email</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="password" placeholder="Password" name="password" required password #pwInput="ngModel"
+            ngModel>
+        <mat-error *ngIf="pwInput.invalid">Please input password</mat-error>
+    </mat-form-field>
+    <mat-error *ngIf="!userExist">Email or Password is invalid</mat-error>
+    <button class="button" type="submit" [disabled]="loginform.invalid">Login</button>
+</form>

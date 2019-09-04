@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {OrderInfo } from '../../share/data-type';
+import {Order, OrderList } from '../../share/data-type';
 import { Router } from '@angular/router';
+import { OrdersService } from '../orders.service';
 
 @Component({
   selector: 'app-cart-dialog',
@@ -9,13 +10,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./cart-dialog.component.css']
 })
 export class CartDialogComponent implements OnInit {
-
-  cart: OrderInfo[] = JSON.parse(localStorage.getItem('mm-cart'));
-  dataSource: OrderInfo[];
+  loading = false;
+  cart: Order[] = JSON.parse(localStorage.getItem('mm-cart'));
+  dataSource: Order[];
   displayedColumns: string[] = ['img', 'name', 'price', 'color', 'size', 'delete'];
   totlePrice = 0.0;
 
-  constructor( public router: Router, public dialogRef: MatDialogRef<CartDialogComponent>) { }
+  constructor(private ordersService: OrdersService, private router: Router, public dialogRef: MatDialogRef<CartDialogComponent>) { }
 
   ngOnInit() {
     if (localStorage.getItem('mm-cart')) {
@@ -26,11 +27,10 @@ export class CartDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  removeOne(id: number) {
+  removeOne(id: number) { // id is the index of list
     const temp = this.dataSource.slice();
     temp.splice(id, 1);
     this.dataSource = temp;
-    // this.dataSource = this.cart.filter(item => item.id !== id);
     localStorage.setItem('mm-cart',  JSON.stringify(this.dataSource));
   }
 
@@ -51,14 +51,36 @@ export class CartDialogComponent implements OnInit {
       this.router.navigate(['/register']);
 
     } else {
-      this.router.navigate(['/checkout']);
+      setTimeout(() => {
+        this.order(userInfo);
+    }, 2000);
     }
     this.dialogRef.close();
     // go to checkout location
   }
 
-  detail(id: number ) {
-    this.router.navigate(['/product', id]);
+  detail(name: string ) {
+    this.router.navigate(['/product', name]);
     this.dialogRef.close();
+  }
+
+  private order(userEmail: string) {
+    const date = new Date();
+    const orderList: OrderList = {
+      email: userEmail,
+      date: date.getTime(),
+      price: this.totlePrice,
+      orders: this.dataSource,
+    };
+    this.ordersService.addOrder(orderList).subscribe(resp => {
+      if (resp) {
+        localStorage.removeItem('mm-cart');
+        this.loading = false;
+        this.router.navigate(['/userinfo']);
+      }
+    }, error => {
+      this.loading = false;
+      console.log(error);
+    });
   }
 }

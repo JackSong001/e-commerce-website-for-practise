@@ -2,26 +2,36 @@
   <div class="detail-container">
     <div class="img-container">
       <mat-grid-list cols="1" rowHeight="150px">
-        <mat-grid-tile colspan="1" rowspan="1" *ngFor="let img of product.imgList">
+        <mat-grid-tile colspan="1" rowspan="1" *ngFor="let img of product?.imgList">
           <img src="../../assets/{{img}}" alt="img" (click)="changeImg(img)">
         </mat-grid-tile>
       </mat-grid-list>
     </div>
     <div class="right-container">
-      <h1>{{product.brandName}}</h1>
+      <h1>{{product?.brandName}}</h1>
       <p>Color : </p>
       <mat-button-toggle-group name="color" aria-label="select color" [value]="color" (change)="color = $event.value">
-        <mat-button-toggle *ngFor="let color of product.color" matTooltip="{{color.name}}" [value]="color.name">
+        <mat-button-toggle *ngFor="let color of product?.color" matTooltip="{{color.name}}" [value]="color.name" (click)="changeItem(color.link)"> 
           <mat-icon [style.color]="color.color">lens</mat-icon> {{ color.name }}
         </mat-button-toggle>
       </mat-button-toggle-group>
       <p>Size guide: </p>
       <mat-button-toggle-group name="size" aria-label="select size" [value]="size" (change)="size = $event.value">
-        <mat-button-toggle *ngFor="let size of product.size" [value]="size">{{size}}</mat-button-toggle>
+        <mat-button-toggle *ngFor="let size of product?.size" [value]="size">{{size}}</mat-button-toggle>
       </mat-button-toggle-group>
-      <p>Price: ${{product.price}}</p>
+      <p>Price: ${{product?.price}}</p>
       <button mat-raised-button (click)="addToCart()">Add to Bag</button>
-      <mat-divider></mat-divider>
+      <mat-tab-group>
+        <mat-tab label="DESCRIPTION">{{product?.description}} </mat-tab>
+        <mat-tab label="FIT"> Model is 5'11" and wearing a size S, which falls approximately 22 1/2" from center-front
+          waistband to hem.</mat-tab>
+        <mat-tab label="MATERIAL/CARE">
+          <ul>
+            <li>95% Viscose, 5% Elastane.</li>
+            <li> Hand washable. No bleach. Low iron with layer cloth. No tumble dry. Dry cleanable.</li>
+          </ul>
+        </mat-tab>
+      </mat-tab-group>
       <div class="icon-group">
         <fa-icon [icon]="faFacebookF"></fa-icon>
         <fa-icon [icon]="faPinterest"></fa-icon>
@@ -29,8 +39,17 @@
         <fa-icon [icon]="faGooglePlusG"></fa-icon>
       </div>
       <p class="center no-margin-bottom" data-no-mobile="">
-        Questions? <button mat-button >Ask a Stylist</button>
+        Questions? <button mat-button>Ask a Stylist</button>
       </p>
+    </div>
+  </div>
+  <div class="item-wrapper">
+    <div *ngFor="let product of relatedProducts" class="item">
+      <ng-container>
+        <div class="img-wrapper" [ngStyle]="getBgImg(product.imgList[0])" (click)="openDetail(product.name)"></div>
+        <div (click)="openDetail(product.name)">{{product.brandName}}</div>
+        <div (click)="openDetail(product.name)">${{product.price}}</div>
+      </ng-container>
     </div>
   </div>
 </div>

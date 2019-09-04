@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product, OrderInfo } from '../../share/data-type';
+import { Product, Order } from '../../share/data-type';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductServiceService } from '../product-service.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -16,7 +16,8 @@ export class ProductDetailComponent implements OnInit {
   faTwitter = faTwitter;
   faGooglePlusG = faGooglePlusG;
   product: Product;
-  productId = undefined;
+  relatedProducts: Product[];
+  productName = '';
   color = '';
   size = '';
   bgImg = {};
@@ -25,25 +26,28 @@ export class ProductDetailComponent implements OnInit {
     private router: Router,
     private productService: ProductServiceService,
     public dialog: MatDialog) {
-    this.route.params.subscribe(params => {
-      this.productId = params.id;
-    });
+
   }
 
   ngOnInit() {
-    this.productService.getProduct(this.productId).subscribe(resp => {
-      this.product = resp;
-      this.color = resp.color[0].name;
-      this.size = resp.size[0];
-      this.changeImg(resp.imgList[0]);
+    this.route.params.subscribe(params => {
+      this.productName = params.name;
+      this.productService.getProduct(this.productName).subscribe(resp => {
+        this.product = resp;
+        this.color = (resp.color.filter(color => color.link === this.productName)[0]).name;
+        this.size = resp.size[0];
+        this.changeImg(resp.imgList[0]);
+        this.productService.getAllProducts().subscribe(resp => {
+          const list = resp.filter(item => item.brandName === this.product.brandName);
+          this.relatedProducts = list.length > 4 ? list.slice(0, 4) : list.slice(0, list.length);
+        });
+      });
     });
-
   }
 
   addToCart() {
-    const order: OrderInfo = {
-      id: this.product.id,
-      name: this.product.name,
+    const order: Order = {
+      name: this.product.brandName,
       color: this.color,
       size: this.size,
       price: this.product.price,
@@ -53,7 +57,7 @@ export class ProductDetailComponent implements OnInit {
     this.openDialog();
   }
 
-  private setLocalStorage(order: OrderInfo) {
+  private setLocalStorage(order: Order) {
     const cart = JSON.parse(localStorage.getItem('mm-cart'));
     if (cart && cart.length > 0) {
       localStorage.removeItem('mm-cart');
@@ -74,9 +78,24 @@ export class ProductDetailComponent implements OnInit {
   }
 
   changeImg(name: string) {
-    console.warn(name);
     this.bgImg = {
       'background-image': `url(../../assets/${name})`
     };
+  }
+  openDetail(name: string) {
+
+    this.router.navigate(['/product', name]);
+    this.ngOnInit();
+  }
+
+  getBgImg(imgName: string) {
+    return {
+      'background-image': `url(../../assets/${imgName})`
+    };
+  }
+
+  changeItem(name: string) {
+    this.router.navigate(['/product', name]);
+    this.ngOnInit();
   }
 }

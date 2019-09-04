@@ -4,16 +4,35 @@
     <ul>
       <!-- <li><a href="">Free shipping both way</a></li> -->
       <li><button mat-raised-button (click)="signUp()">
-        <span *ngIf="logined()">Sign in</span> 
-        <mat-icon>person</mat-icon>
-      </button></li>
-      <li><button mat-icon-button (click)="openDialog()"><mat-icon>shopping_cart</mat-icon></button></li>
+          <span *ngIf="logined()">Sign in</span>
+          <mat-icon>person</mat-icon>
+        </button></li>
+      <li><button mat-icon-button (click)="openDialog()">
+          <mat-icon>shopping_cart</mat-icon>
+        </button></li>
+      <li class="search">
+        <form class="form-wrapper">
+          <mat-form-field class="example-full-width">
+            <!-- <button mat-icon-button (click)="searchResult()">
+              <mat-icon>search</mat-icon>
+            </button> -->
+            <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" >
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option"  (click)="searchResult()">
+                {{option.name}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+      </li>
     </ul>
   </div>
 
   <div class="mid-nav">
     <a routerLink="/home" routerLinkActive="active">
-      <img class="main-ico" src="https://res.cloudinary.com/mmlafleur/image/upload/c_scale,dpr_1.0,f_auto,fl_progressive,q_auto,w_200/v1/mmlafleur.com/images/mmlafleur-logo.png" data-src="https://res.cloudinary.com/mmlafleur/image/upload/c_scale,dpr_auto,f_auto,fl_progressive,q_auto,w_auto/v1/mmlafleur.com/images/mmlafleur-logo.png">
+      <img class="main-ico"
+        src="https://res.cloudinary.com/mmlafleur/image/upload/c_scale,dpr_1.0,f_auto,fl_progressive,q_auto,w_200/v1/mmlafleur.com/images/mmlafleur-logo.png"
+        data-src="https://res.cloudinary.com/mmlafleur/image/upload/c_scale,dpr_auto,f_auto,fl_progressive,q_auto,w_auto/v1/mmlafleur.com/images/mmlafleur-logo.png">
     </a>
     <ul>
       <li><a href="">START A BENTO</a></li>
@@ -22,7 +41,7 @@
       <li><a href="">THE M DASH</a></li>
     </ul>
   </div>
-  
+
   <div>
     <ul class="lower-nav">
       <li><a href="">New Collection</a></li>
@@ -53,34 +72,58 @@
   <div class="footer-1">
     <div class="footer-textbox">
       <h2>Refer a friend</h2>
-      <p style="font-size: 15px"><a href="#">Click here to share MM </a>with the women in your life, and we’ll treat you both to something special.</p>
+      <p style="font-size: 15px"><a href="#">Click here to share MM </a>with the women in your life, and we’ll treat you
+        both to something special.</p>
     </div>
 
-  <div style="display: flex">
-    <div class="sm-box">
-      <h3>bonjour@mmlafleur.com</h3>
-      <p>Send our team of whipsmart stylists a note. We’re fast typers.</p>
+    <div style="display: flex">
+      <div class="sm-box">
+        <h3>bonjour@mmlafleur.com</h3>
+        <p>Send our team of whipsmart stylists a note. We’re fast typers.</p>
+      </div>
+      <div class="sm-box">
+        <h3>(212) 300-4592</h3>
+        <p>Customer service & styling available M–F, 8:30AM–8:30PM ET.</p>
+      </div>
+      <div class="sm-box">
+        <h3>Locations</h3>
+        <p>Visit us in New York, or check out our other locations.</p>
+      </div>
     </div>
-    <div class="sm-box">
-      <h3>(212) 300-4592</h3>
-      <p>Customer service & styling available M–F, 8:30AM–8:30PM ET.</p>
-    </div>
-    <div class="sm-box">
-      <h3>Locations</h3>
-      <p>Visit us in New York, or check out our other locations.</p>
-    </div>
-  </div>
 
   </div>
 </footer>
 
 <div style="display: flex;justify-content: center; color: #747576">
   <div style="display: flex; justify-content: space-between; width: 88%; color: #747576">
-    <div class="ss-box"><h3>SHOP</h3><ul><li><a href=""></a>Start a Bento</li><li><a href="">Shop the Latest</a></li><li><a href="">Gift Cards</a></li></ul></div>
-    <div class="ss-box"><h3>VISIT US</h3><ul><li><a href="">Locations</a></li><li><a href="">Events</a></li></ul></div>
-    <div class="ss-box"><h3>ABOUT</h3><ul><li><a href="">Our Story</a></li><li><a href="">The M Dash</a></li><li><a href="">Press</a></li></ul></div>
-    <div class="ss-box"><h3>MORE</h3><ul><li><a href="">Contact & FAQ</a></li></ul></div>
+    <div class="ss-box">
+      <h3>SHOP</h3>
+      <ul>
+        <li><a href=""></a>Start a Bento</li>
+        <li><a href="">Shop the Latest</a></li>
+        <li><a href="">Gift Cards</a></li>
+      </ul>
+    </div>
+    <div class="ss-box">
+      <h3>VISIT US</h3>
+      <ul>
+        <li><a href="">Locations</a></li>
+        <li><a href="">Events</a></li>
+      </ul>
+    </div>
+    <div class="ss-box">
+      <h3>ABOUT</h3>
+      <ul>
+        <li><a href="">Our Story</a></li>
+        <li><a href="">The M Dash</a></li>
+        <li><a href="">Press</a></li>
+      </ul>
+    </div>
+    <div class="ss-box">
+      <h3>MORE</h3>
+      <ul>
+        <li><a href="">Contact & FAQ</a></li>
+      </ul>
+    </div>
   </div>
 </div>
-
-

@@ -56,3 +56,44 @@ fa-icon {
     height: 24px;
     padding: 8px;
 }
+
+mat-divider {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    display: block;
+    margin: 0;
+    border-top-width: 1px;
+    border-top-style: solid;
+    font-weight: 400;
+}
+
+mat-tab-group{
+    margin: 8px 0;
+    width: 70%;
+    min-height: 16vh;
+}
+.item-wrapper {
+    width: 80%;
+    margin: 10%; 
+    display: flex;
+    justify-content: flex-start;
+}
+.item {
+    flex: 0 1 25%;
+    box-sizing: border-box;
+    padding-bottom: 6vh;
+  }
+  
+  .item + div {
+    width: 100%;
+  }
+  
+  .img-wrapper {
+    background-size: 42vw auto;
+    background-repeat: no-repeat;
+    background-position: -7vw;
+    width: 80%;
+    height: 40vh;
+    max-width: 14vw;
+    object-fit: cover;
+  }

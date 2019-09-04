@@ -1,23 +1,29 @@
 import { Injectable } from '@angular/core';
 import { Account } from '../share/data-type';
-import { Accounts } from '../share/mock-data';
-import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserServiceService {
 
-  accounts: Account[] = Accounts.slice();
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getAccount(email: string, password: string): Observable<Account> {
-    const account = this.accounts.filter( acc => (acc.emailAdd === email && acc.password === password))[0];
-    return of(account);
+    return this.http.get<Account>(`/api/login/${email}/${password}`);
+  }
+
+  addUser(email: string, userInfo: Account): Observable<Account> {
+    return this.http.put<Account>(`/api/register/${email}`, userInfo);
   }
 
   getUserInfo(email: string): Observable<Account> {
-    const account = this.accounts.filter( acc => (acc.emailAdd === email))[0];
-    return of(account);
+    return this.http.get<Account>(`/api/account/${email}`);
+  }
+
+  addNewUser(userInfo: Account): Observable<Account> {
+    return this.http.post<Account>('/api/register', userInfo);
   }
 }

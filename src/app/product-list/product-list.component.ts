@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { Products } from '../../share/mock-data';
 import { Product } from '../../share/data-type';
 import { ProductServiceService } from '../product-service.service';
 import { Router } from '@angular/router';
@@ -22,14 +21,13 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  openDetail(productId: number) {
-    this.router.navigate(['/product', productId]);
+  openDetail(name: string) {
+    this.router.navigate(['/product', name]);
   }
 
-  getBgImg(name: string) {
-    console.log(name);
+  getBgImg(imgName: string) {
     return {
-      'background-image': `url(../../assets/${name})`
-    }
+      'background-image': `url(../../assets/${imgName})`
+    };
   }
 }

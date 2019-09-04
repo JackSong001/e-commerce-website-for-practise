@@ -1,30 +1,18 @@
 export interface Account {
-  emailAdd: string;
+  email: string;
   password: string;
   firstName: string;
   lastName: string;
-  telephone: number;
-  company: string;
-  street: string;
-  apt: string;
   country: string;
-  state: string;
+  address: string;
   city: string;
-  zip: number;
-}
-
-export interface Address {
-  company: string;
-  street: string;
-  apt: string;
-  country: string;
   state: string;
-  city: string;
-  zip: number;
+  zip: string;
+  phone: number;
+  bod: number;
 }
 
 export interface Product {
-  id: number;
   name: string; // ronda-black
   brandName: string; //The Ronda Top
   price: number;
@@ -40,11 +28,22 @@ export interface Color {
   link: string;
 }
 
-export interface OrderInfo {
+export interface Order {
   price: number;
-  id: number;
   name: string;
   color: string;
   size: string;
   img: string;
+}
+
+export interface OrderList {
+  email: string;
+  date: number;
+  price: number;
+  orders: Order[];
+}
+
+export interface State {
+  name: string;
+  abbreviation: string;
 }

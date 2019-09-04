@@ -1,54 +1,6 @@
-<!-- <div style="background-color: #f1f2f3; margin-left: 25%; margin-right: 25%; padding-top:30px; padding-bottom: 30px;">
-  <div>
-    <div style="text-align: center">
-      <button (click)="isLogIn=true" [style.border-bottom]="isLogIn ? '1px black solid' : 'none'">Log In</button>
-      <button (click)="isLogIn=false" [style.border-bottom]="isLogIn ? 'none' : '1px black solid'">Creat Account</button>
-    </div>
-
-    <div style="margin: 40px 20px 40px 20px;" *ngIf="isLogIn">
-      <div style="margin-bottom: 10px;">
-        <span>Email Address</span>
-        <input style="padding: 10px; width: 100%" type="text">
-      </div>
-      <div>
-        <span>Password</span>
-        <input style="padding: 10px ; width: 100%" type="text">
-      </div>
-      <a href="" class="black-button">Log In</a>
-    </div>
-
-    <div style="margin: 40px 20px 40px 20px;" *ngIf="!isLogIn">
-      <div style="margin-bottom: 10px; display: flex; justify-content: space-between;">
-        <div style="width: 48%">
-          <span style="display: block">First Name</span>
-          <input style="padding: 10px; width: 100%;" type="text">
-        </div>
-        <div style="width: 48%">
-          <span style="display: block">Last Name</span>
-          <input style="padding: 10px; width: 100%;" type="text">
-        </div>
-      </div>
-      <div>
-        <span>Email Address</span>
-        <input style="padding: 10px ; width: 100%" type="text">
-      </div>
-      <p style="margin: 20px 0 20px 0;color: #747576">Your privacy is important to us. See our Terms.</p>
-
-      <div>
-        <span>Password</span>
-        <input style="padding: 10px; width: 100%" type="text">
-        <p style="margin: 20px 0 20px 0; color: #747576">Password must be at least 8 characters and contain at least one uppercase letter and one number.</p>
-      </div>
-
-      <div>
-        <span>Confrim Password</span>
-        <input style="padding: 10px; width: 100%" type="text">
-      </div>
-      <a href="" class="black-button">Register</a>
-    </div>
-
-  </div>
-</div> -->
+<div class="loading-mask" *ngIf="loading">
+    <mat-spinner class="loading"></mat-spinner>
+</div>
 <mat-card class="login-bg-color">
   <mat-card-header>
       <mat-card-title>Login</mat-card-title>
@@ -56,33 +8,89 @@
   <mat-card-content>
       <mat-tab-group mat-align-tabs="center">
           <mat-tab label="SIGN UP">
-              <mat-form-field class="input-wrapper">
-                  <input matInput placeholder="Email Address" [ngModel]="emailAdd"
-                      (ngModelChange)="emailAdd = $event.trim()">
-                  <mat-hint align="start"  color="warn" *ngIf="wrongEmail">Email Address is <strong>not exist</strong></mat-hint>
+            <form (submit)="logIn(loginform)" #loginform="ngForm">
+              <mat-form-field>
+                  <input matInput placeholder="Email" name="email" required email #emailInput="ngModel"
+                      ngModel>
+                  <mat-error *ngIf="emailInput.invalid">Please give a valid email</mat-error>
               </mat-form-field>
-              <mat-form-field class="input-wrapper">
-                  <input matInput type="password" placeholder="Password" [ngModel]="password"
-                      (ngModelChange)="password = $event.trim()">
-                  <mat-hint align="start"  color="warn" *ngIf="wrongPsw">Password is not <strong>exist</strong></mat-hint>
+              <mat-form-field>
+                  <input matInput type="password" placeholder="Password" name="password" required password #pwInput="ngModel"
+                      ngModel>
+                  <mat-error *ngIf="pwInput.invalid">Please input password</mat-error>
               </mat-form-field>
+              <mat-error *ngIf="!userExist">Email or Password is invalid</mat-error>
+              <button class="button" type="submit" [disabled]="loginform.invalid">Login</button>
+          </form>
           </mat-tab>
           <mat-tab label="REGISTER">
-              <mat-form-field class="input-wrapper">
-                  <input matInput placeholder="Email Address" [ngModel]="emailAdd"
-                      (ngModelChange)="emailAdd = $event.trim()">
-                  <mat-hint align="start"  color="warn" *ngIf="wrongEmail">Email Address is <strong>not exist</strong></mat-hint>
-              </mat-form-field>
-              <mat-form-field class="input-wrapper">
-                  <input matInput placeholder="Password" [ngModel]="password"
-                      (ngModelChange)="password = $event.trim()">
-                  <mat-hint align="start"  color="warn" *ngIf="wrongPsw">Password is not <strong>exist</strong></mat-hint>
-              </mat-form-field>
+                <form [formGroup]="accountForm" (ngSubmit)="updateUserInfo()" >
+                    <div>
+                        <h3>Account</h3>
+                        <mat-form-field>
+                            <input matInput placeholder="Email" required formControlName="email">
+                            <mat-error *ngIf="!accountForm.email?.valid">Please give a valid email</mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput type="password" placeholder="Password" required formControlName="password">
+                            <mat-error *ngIf="!accountForm.password?.valid">Please input password</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <h3>Address</h3>
+                        <mat-form-field>
+                            <input matInput placeholder="firstName" required formControlName="firstName">
+                            <mat-error *ngIf="!accountForm.firstName?.valid">First Name is Required</mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="lastName" required formControlName="lastName">
+                            <mat-error *ngIf="!accountForm.lastName?.valid">Last Name is Required</mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="country" required formControlName="country">
+                            <mat-error *ngIf="!accountForm.country?.valid">Country is Required</mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="address" required formControlName="address">
+                            <mat-error *ngIf="!accountForm.address?.valid">Address is Required</mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="city" required formControlName="city">
+                            <mat-error *ngIf="!accountForm.city?.valid">City is Required</mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>State</mat-label>
+                            <mat-select required formControlName="state">
+                                <mat-option disabled> None </mat-option>
+                                <mat-option *ngFor="let state of states" [value]="state.abbreviation">
+                                    {{state.name}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="!accountForm.state?.valid">Please choose a state</mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="zip" required formControlName="zip">
+                            <mat-error *ngIf="!accountForm.zip?.valid">Zip code is Required</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <h3>Personal</h3>
+                        <div class="personal-wrapper">
+                            <mat-form-field>
+                                <input matInput placeholder="phone" required formControlName="phone">
+                                <mat-error *ngIf="!accountForm.phone?.valid">Cell Phone Number is Required</mat-error>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput [matDatepicker]="picker1" placeholder="Birth Day" required formControlName="bod">
+                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker #picker1></mat-datepicker>
+                                <mat-error *ngIf="!accountForm.bod?.valid">Birth Day is Required</mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <button mat-raised-button color="primary" type="submit" [disabled]="accountForm.invalid">SEND</button>
+                </form>
           </mat-tab>
       </mat-tab-group>
   </mat-card-content>
-
-  <mat-card-actions align='end'>
-      <button mat-raised-button (click)="logIn()">Log In</button>
-  </mat-card-actions>
 </mat-card>

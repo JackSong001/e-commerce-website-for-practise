@@ -36,14 +36,9 @@ a {
 }
 
 .top-nav ul{
-  float: right;
-  font-size: 15px;
-}
-
-.top-nav ul li{
-  color: #bebfc0;
-  padding-left: 30px;
-  float: left;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .mid-nav ul{
@@ -119,4 +114,14 @@ footer{
 .ss-box a{
   color: #747576;
   font-family: Maison Neue;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
 }

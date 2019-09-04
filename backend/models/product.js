@@ -1,18 +1,22 @@
 const mongoose = require('mongoose');
 
+const colorSchema = mongoose.Schema({
+    name: String,
+    color: String,
+    link: String,
+});
+
+
 const productSchema = mongoose.Schema({
     name: String,
-    brief: String,
-    fullPrice: Number,
-    dealPrice: Number,
-    bc: [String],
-    type: [String],
-    packaging: String,
-    content: String,
-    brand: String,
-    manufacturer: String,
-    description: [String],
-    img: [String],
+    brandName: String,
+    price: Number,
+    size: [String],
+    description: String,
+    imgList: [String],
+    color: [colorSchema],
 }, {collection: 'products'});
 
-module.exports = mongoose.model("Product", productSchema)
+module.exports = mongoose.model("Product", productSchema);
+
+
